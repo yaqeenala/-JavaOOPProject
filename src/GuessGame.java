@@ -5,7 +5,9 @@ import java.util.Scanner;
 
 public class GuessGame {
     private int secretNumber;
+    private int difficultyLevel;
     private Scanner scanner = new Scanner(System.in);
+
 
     public static void main(String[] args) {
         GuessGame game = new GuessGame();
@@ -38,18 +40,52 @@ public class GuessGame {
     }
 
     public void start() {
-        for (int tries = 0; tries < 5; tries++) {
-            System.out.println("Guess the number (1-100): ");
-            int userGuess = scanner.nextInt();
+        System.out.println("Choose difficulty level? \n1.Easy  \n2.Medium \n3.Hard");
+        int difficultyLevel = scanner.nextInt();
+        if (difficultyLevel == 1) {
+            for (int tries = 0; tries < 10; tries++) {
+                System.out.println("Guess the number (1-100): ");
+                int userGuess = scanner.nextInt();
 
-            if (checkGuess(userGuess)) {
-                System.out.println("You got it!");
-                return;
-            } else if (userGuess < secretNumber) {
-                System.out.println("Too low, try again.");
-            } else {
-                System.out.println("Too high, try again.");
+                if (checkGuess(userGuess)) {
+                    System.out.println("You got it!");
+                    return;
+                } else if (userGuess < secretNumber) {
+                    System.out.println("Too low, try again.");
+                } else {
+                    System.out.println("Too high, try again.");
+                }
             }
+        } else if (difficultyLevel == 2) {
+            for (int tries = 0; tries < 7; tries++) {
+                System.out.println("Guess the number (1-100): ");
+                int userGuess = scanner.nextInt();
+
+                if (checkGuess(userGuess)) {
+                    System.out.println("You got it!");
+                    return;
+                } else if (userGuess < secretNumber) {
+                    System.out.println("Too low, try again.");
+                } else {
+                    System.out.println("Too high, try again.");
+                }
+            }
+            
+        } else if (difficultyLevel == 3) {
+            for (int tries = 0; tries < 5; tries++) {
+                System.out.println("Guess the number (1-100): ");
+                int userGuess = scanner.nextInt();
+
+                if (checkGuess(userGuess)) {
+                    System.out.println("You got it!");
+                    return;
+                } else if (userGuess < secretNumber) {
+                    System.out.println("Too low, try again.");
+                } else {
+                    System.out.println("Too high, try again.");
+                }
+            }
+
         }
 
         System.out.println("The correct answer was: " + secretNumber);
